@@ -1,95 +1,60 @@
 "use client";
 import React from "react";
-
-interface NftCardProps {
+import Image from "next/image";
+interface CourseCardProps {
+  badgeText: string;
+  badgeColor?: string;
   imageUrl: string;
   title: string;
-  highestBid: string;
-  price: string;
-  timeLeft?: string;
+  description: string;
+  difficulty: string;
+  duration: string;
 }
-
-const ClockIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path
-      d="M12 22C17.5 22 22 17.5 22 12S17.5 2 12 2 2 6.5 2 12s4.5 10 10 10Z"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-    <path d="M12 6v6l4 2" stroke="currentColor" strokeWidth="2" />
-  </svg>
-);
-
-const HeartIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="none" {...props}>
-    <path
-      d="M20.8 4.6C19.8 3.6 18.4 3 17 3s-2.8.6-3.8 1.6L12 5.7l-1.2-1.1C9.8 3.6 8.4 3 7 3S4.2 3.6 3.2 4.6C1.1 6.7 1.1 10.1 3.2 12.2L12 21l8.8-8.8c2.1-2.1 2.1-5.5 0-7.6Z"
-      stroke="currentColor"
-      strokeWidth="2"
-    />
-  </svg>
-);
-
-const EthIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M12 1.3 5.3 12.7 12 16V1.3Z" opacity=".6" />
-    <path d="M12 1.3 18.7 12.7 12 16V1.3Z" opacity=".8" />
-    <path d="M5.3 14 12 17.3 18.7 14 12 22.7 5.3 14Z" />
-  </svg>
-);
-
-const NftCard: React.FC<NftCardProps> = ({
+const CourseCard: React.FC<CourseCardProps> = ({
+  badgeText,
+  badgeColor = "#1a1a1a",
   imageUrl,
   title,
-  highestBid,
-  price,
-  timeLeft,
+  description,
+  difficulty,
+  duration,
 }) => (
-  <div className="w-full max-w-sm rounded-3xl bg-white dark:bg-black border shadow-lg p-2 font-space-grotesk">
-    <div className="relative">
-      <img
+  <div className="w-full max-w-md bg-[#0f0f0f] rounded-xl border border-zinc-700 transition-all duration-200 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,255,255,0.1)] shadow-[0_0_15px_rgba(255,255,255,0.05)] overflow-hidden">
+    <div className="w-full h-80 relative">
+      <Image
         src={imageUrl}
         alt={title}
-        className="rounded-2xl aspect-square object-cover w-full"
+        width={320}
+        height={320}
+        className="w-full h-full object-cover object-[center_20%]"
       />
-
-      {timeLeft && (
-        <div className="absolute top-3 left-3 bg-black/70 text-white text-xs px-3 py-1 rounded-full flex items-center gap-1">
-          <ClockIcon className="w-4 h-4 text-cyan-300" />
-          {timeLeft}
-        </div>
-      )}
-
-      <button className="absolute top-3 right-3 bg-black/70 p-2 rounded-full text-white hover:text-red-500">
-        <HeartIcon className="w-5 h-5" />
-      </button>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
     </div>
-
-    <div className="p-3">
-      <div className="flex justify-between items-center">
-        <h3 className="font-bold text-lg truncate">{title}</h3>
-        <EthIcon className="w-5 h-5 text-gray-500" />
-      </div>
-
-      <p className="text-sm text-gray-500 mt-1">Highest Bid {highestBid}</p>
-
-      <div className="flex justify-between mt-3">
-        <span className="text-sm font-bold text-gray-600">Price</span>
-        <span className="text-lg font-bold text-cyan-500">{price}</span>
+    <div style={{ backgroundColor: badgeColor }} className="p-8">
+      <h3 className="text-2xl font-bold text-white">{title}</h3>
+      <p className="mt-4 text-base text-zinc-400 leading-relaxed">
+        {description}
+      </p>
+    </div>
+    <div className="px-8 py-5 bg-[#0f0f0f] border-t border-zinc-700">
+      <div className="flex items-center justify-between text-sm text-zinc-400">
+        <span className="font-semibold text-zinc-300">{difficulty}</span>
+        <span className="font-semibold text-zinc-300">{duration}</span>
       </div>
     </div>
   </div>
 );
-
-export default function SingleNftCard() {
+export default function SingleCourseCard() {
   return (
-    <div className="lex items-center justify-center p-6">
-      <NftCard
-        imageUrl="me.jpg"
-        title="Ethereal Dreams"
-        highestBid="1/1"
-        price="0.047 ETH"
-        timeLeft="08:10:00"
+    <div className="flex items-center justify-center p-4 w-full h-full">
+      <CourseCard
+        badgeText="Free course"
+        badgeColor="#1a1a1a"
+        imageUrl="/me.jpg"
+        title="Radhofan Azizi Ramdhani"
+        description="Hi My Name is Radhofan! I'd like to build Fullstack Applications and AI/ML Solutions."
+        difficulty="Fullstack Developer"
+        duration="AI/ML Engineer"
       />
     </div>
   );

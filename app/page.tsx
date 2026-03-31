@@ -1,5 +1,4 @@
-import Image from "next/image";
-import TechMarquee from "./components/TechMarqueen";
+import TechMarqueen from "./components/TechMarqueen";
 import ExperienceTimeline from "./components/ExperienceTimeline";
 import Particles from "@/components/Particles";
 import ProfileCard from "./components/ProfileCard";
@@ -23,7 +22,7 @@ export default function Home() {
         />
       </div>
       {/* Left static column */}
-      <section className="hidden lg:flex w-1/2 items-center justify-center ml-[20vw]">
+      <section className="hidden lg:flex w-1/2 items-center justify-center ml-[10vw]">
         <div className="relative h-[80%] w-[80%]">
           <ProfileCard />
         </div>
@@ -31,7 +30,7 @@ export default function Home() {
 
       {/* Right scrollable column */}
       <section
-        className="w-full lg:w-1/2 overflow-y-auto  mr-[20vw]"
+        className="w-full lg:w-1/2 overflow-y-auto mr-[20vw]"
         style={{
           overflowY: "scroll",
           scrollbarWidth: "none",
@@ -40,18 +39,16 @@ export default function Home() {
       >
         <div className="min-h-screen px-12 py-24">
           {/* placeholder content */}
-          <h1 className="text-4xl font-semibold text-black dark:text-zinc-100">
-            Tanren Works
-          </h1>
+          {/* <h1 className="text-4xl font-semibold text-zinc-100">Tanren Works</h1>
 
-          <p className="mt-6 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
+          <p className="mt-6 max-w-xl text-lg text-zinc-400">
             Scrollable content lives here. This will later be split into
             sections/components.
-          </p>
+          </p> */}
 
           <div className="mt-32 space-y-24">
             <Title />
-            <TechMarquee />
+            <TechMarqueen />
             <ExperienceTimeline />
             <ProjectShowcase />
           </div>

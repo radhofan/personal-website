@@ -154,26 +154,28 @@ const Marquee = ({
           WebkitMaskImage:
             "linear-gradient(to right, transparent, black 2rem, black calc(100% - 2rem), transparent)",
         } as React.CSSProperties
-      } // <--- Add this cast here
+      }
     >
-      <div className="w-max flex">
+      <div
+        className="w-max flex"
+        style={{
+          animation: `marquee-move var(--speed) linear infinite ${direction}`,
+        }}
+      >
         {[...logos, ...logos].map((logo, index) => {
-          // FIX: Assign to a Capitalized variable so React treats it as a Component
           const LogoIcon = logo.component;
 
           return (
             <div
               key={`${logo.id}-${index}`}
-              className="flex-shrink-0 flex justify-center items-center bg-white/10 border border-black rounded-2xl text-white"
+              className="shrink-0 flex justify-center items-center bg-[#0f0f0f] border border-zinc-700 rounded-2xl text-zinc-300"
               style={{
                 width: "var(--item-width)",
                 aspectRatio: "1 / 1.2",
                 marginRight: "var(--item-gap)",
-                animation: `marquee-move var(--speed) linear infinite ${direction}`,
               }}
             >
               <div className="w-3/5 h-auto">
-                {/* FIX: Render as a JSX Tag, not a variable */}
                 <LogoIcon />
               </div>
             </div>
@@ -190,7 +192,7 @@ function Logomarquee() {
     styleSheet.innerText = `
       @keyframes marquee-move {
         from { transform: translateX(0); }
-        to { transform: translateX(calc(-50% - (var(--item-gap) / 2))); }
+        to { transform: translateX(-50%); }
       }
     `;
     document.head.appendChild(styleSheet);
