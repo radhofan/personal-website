@@ -31,7 +31,7 @@ export default function ProjectShowcase() {
               Fullstack
             </Badge>
           </CardAction>
-          <CardTitle className="text-zinc-100">AI-Powered Collaborative Kanban</CardTitle>
+          <CardTitle className="text-zinc-100">Dandori</CardTitle>
           <CardDescription className="text-zinc-400">
             A high-performance project management tool that features real-time updates and AI-driven task estimation.
           </CardDescription>
@@ -61,7 +61,7 @@ export default function ProjectShowcase() {
               Backend / Java
             </Badge>
           </CardAction>
-          <CardTitle className="text-zinc-100">Event-Driven Fintech Ledger</CardTitle>
+          <CardTitle className="text-zinc-100">Daichou</CardTitle>
           <CardDescription className="text-zinc-400">
             A distributed banking backend that processes transactions between accounts using a microservices architecture.
           </CardDescription>
@@ -91,7 +91,7 @@ export default function ProjectShowcase() {
               System / .NET
             </Badge>
           </CardAction>
-          <CardTitle className="text-zinc-100">High-Performance IoT Telemetry Hub</CardTitle>
+          <CardTitle className="text-zinc-100">Hibana</CardTitle>
           <CardDescription className="text-zinc-400">
             A backend system capable of ingesting thousands of &quot;pings&quot; per second from simulated IoT devices using CQRS.
           </CardDescription>

@@ -1,6 +1,6 @@
 "use client";
 
-import Button from "@/app/docs/button/button";
+import { Button } from "@/components/ui/button";
 
 const GoogleIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -92,9 +92,9 @@ export default function Card() {
           <Button
             variant="outline"
             onClick={(e) => e.preventDefault()}
-            iconLeft={<GoogleIcon />}
             className="w-full border border-gray-200 dark:border-zinc-600 text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:bg-[#232323] py-2 rounded-md transition"
           >
+            <GoogleIcon />
             Continue with Google
           </Button>
         </form>
