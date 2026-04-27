@@ -1,10 +1,12 @@
 import Particles from "@/components/Particles";
-import ProfileCard from "./components/ProfileCard";
+import LeftColumn from "./components/LeftColumn";
 import RightColumn from "./components/RightColumn";
+import ProjectsGrid from "./components/ProjectsGrid";
 
 export default function Home() {
   return (
-    <div className="flex h-screen w-screen bg-[#151312]">
+    <div className="bg-[#151312]">
+      {/* Particles — fixed so they cover the full viewport at all scroll positions */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Particles
           particleColors={["#ffffff"]}
@@ -19,15 +21,18 @@ export default function Home() {
         />
       </div>
 
-      {/* Left static column */}
-      <section className="hidden lg:flex w-1/2 items-center justify-center ml-[10vw]">
-        <div className="relative h-[80%] w-[80%]">
-          <ProfileCard />
+      {/* Split layout — viewport height, same max-width container as projects grid */}
+      <div className="flex h-screen w-screen relative z-10">
+        <div className="flex w-full max-w-7xl mx-auto h-full">
+          <LeftColumn />
+          <RightColumn />
         </div>
-      </section>
+      </div>
 
-      {/* Right column — sticky header + scrollable sections */}
-      <RightColumn />
+      {/* Projects grid — below the fold */}
+      <section id="projects-grid" className="relative z-10">
+        <ProjectsGrid />
+      </section>
     </div>
   );
 }

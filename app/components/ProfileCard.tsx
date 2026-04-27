@@ -46,16 +46,14 @@ const CourseCard: React.FC<CourseCardProps> = ({
 );
 export default function SingleCourseCard() {
   return (
-    <div className="flex items-center justify-center p-4 w-full h-full">
-      <CourseCard
-        badgeText="Free course"
-        badgeColor="#1a1a1a"
-        imageUrl="/me.jpg"
-        title="Radhofan Azizi Ramdhani"
-        description="Hi My Name is Radhofan! I'd like to build Fullstack Applications and AI/ML Solutions."
-        difficulty="Fullstack Developer"
-        duration="AI/ML Engineer"
-      />
-    </div>
+    <CourseCard
+      badgeText="Free course"
+      badgeColor="#1a1a1a"
+      imageUrl="/me.jpg"
+      title="Radhofan Azizi Ramdhani"
+      description="Hi My Name is Radhofan! I'd like to build Fullstack Applications and AI/ML Solutions."
+      difficulty="Fullstack Developer"
+      duration="AI/ML Engineer"
+    />
   );
 }

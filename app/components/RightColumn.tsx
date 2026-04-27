@@ -3,9 +3,9 @@ import { useRef, useState, useEffect } from "react";
 import Title from "./Title";
 import TechMarqueen from "./TechMarqueen";
 import ExperienceTimeline from "./ExperienceTimeline";
-import ProjectShowcase from "./ProjectShowcase";
 
-type SectionKey = "skills" | "experience" | "projects";
+type InternalKey = "skills" | "experience";
+type SectionKey = InternalKey | "projects";
 
 const sections: { key: SectionKey; label: string }[] = [
   { key: "skills", label: "Skills" },
@@ -20,14 +20,13 @@ export default function RightColumn() {
 
   const skillsRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
 
-  const sectionRefs: Record<SectionKey, React.RefObject<HTMLDivElement | null>> = {
+  const internalRefs: Record<InternalKey, React.RefObject<HTMLDivElement | null>> = {
     skills: skillsRef,
     experience: experienceRef,
-    projects: projectsRef,
   };
 
+  // Active detection for internal sections (right column scroll)
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
@@ -36,8 +35,13 @@ export default function RightColumn() {
       const containerTop = container.getBoundingClientRect().top;
       const offset = (headerRef.current?.offsetHeight ?? 0) + 60;
 
-      const found = [...sections].reverse().find(({ key }) => {
-        const el = sectionRefs[key].current;
+      const ordered: { key: InternalKey; ref: React.RefObject<HTMLDivElement | null> }[] = [
+        { key: "experience", ref: experienceRef },
+        { key: "skills", ref: skillsRef },
+      ];
+
+      const found = ordered.find(({ ref }) => {
+        const el = ref.current;
         if (!el) return false;
         return el.getBoundingClientRect().top - containerTop <= offset;
       });
@@ -49,9 +53,30 @@ export default function RightColumn() {
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Active detection for projects section (page scroll)
+  useEffect(() => {
+    const handleWindowScroll = () => {
+      const el = document.getElementById("projects-grid");
+      if (!el) return;
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.6) {
+        setActive("projects");
+      } else {
+        // revert to internal active when scrolled back up
+        setActive((prev) => (prev === "projects" ? "skills" : prev));
+      }
+    };
+
+    window.addEventListener("scroll", handleWindowScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleWindowScroll);
+  }, []);
+
   const scrollToSection = (key: SectionKey) => {
+    if (key === "projects") {
+      document.getElementById("projects-grid")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
     const container = scrollRef.current;
-    const el = sectionRefs[key].current;
+    const el = internalRefs[key].current;
     if (!container || !el) return;
     const containerTop = container.getBoundingClientRect().top;
     const elTop = el.getBoundingClientRect().top - containerTop + container.scrollTop;
@@ -62,7 +87,7 @@ export default function RightColumn() {
   return (
     <section
       ref={scrollRef}
-      className="w-full lg:w-1/2 overflow-y-scroll mr-[20vw]"
+      className="w-full lg:w-1/2 overflow-y-scroll"
       style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
     >
       {/* Sticky title + nav */}
@@ -85,16 +110,13 @@ export default function RightColumn() {
         </nav>
       </div>
 
-      {/* Content */}
+      {/* Skills + Experience only */}
       <div className="px-12 pb-24">
         <div ref={skillsRef} className="pt-16">
           <TechMarqueen />
         </div>
         <div ref={experienceRef} className="pt-24">
           <ExperienceTimeline />
-        </div>
-        <div ref={projectsRef} className="pt-24">
-          <ProjectShowcase />
         </div>
       </div>
     </section>
