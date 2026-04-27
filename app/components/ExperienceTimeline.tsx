@@ -286,21 +286,19 @@ const TimelineItem = memo(function TimelineItem({
   const contentId = `timeline-content-${item.id}`;
 
   return (
-    <div className="relative group">
-      {/* Connecting line with gradient - now always visible */}
-      <div className="absolute left-6 top-14 bottom-0 w-0.5 bg-gradient-to-b from-zinc-700 via-zinc-600 to-zinc-700" />
-
-      {/* Timeline node */}
-      <div className="absolute left-4 top-6 w-4 h-4 bg-[#0f0f0f] border-2 border-zinc-600 rounded-full flex items-center justify-center transform transition-all duration-200 z-10">
-        <div className="w-2 h-2 bg-zinc-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+    <div className="flex gap-4 mb-6 group">
+      {/* Left column: dot + line */}
+      <div className="flex flex-col items-center shrink-0">
+        <div className="mt-6 w-3 h-3 rounded-full border-2 border-zinc-600 bg-[#0f0f0f] shrink-0 group-hover:border-zinc-400 transition-colors duration-200" />
+        <div className="flex-1 w-0.5 mt-1 bg-gradient-to-b from-zinc-700 to-zinc-800" />
       </div>
 
-      {/* Main content card */}
-      <div className="ml-12 mb-6">
+      {/* Right column: card */}
+      <div className="flex-1 pb-2">
         <div
           className={`
-          bg-[#0f0f0f] 
-          rounded-lg border border-zinc-700 
+          bg-[#0f0f0f]
+          rounded-lg border border-zinc-700
           transition-all duration-200
           ${expanded ? "shadow-lg shadow-black/20" : "shadow-none hover:shadow-lg hover:shadow-black/20"}
         `}
@@ -371,6 +369,7 @@ const TimelineItem = memo(function TimelineItem({
   );
 });
 TimelineItem.displayName = "TimelineItem";
+
 
 // --- MAIN TIMELINE ---
 export function ProfessionalTimeline({

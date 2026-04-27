@@ -166,7 +166,7 @@ function Logomarquee() {
 
   return (
     <div className="max-w-3xl mx-auto">
-      <header className="mb-8 mt-16">
+      <header className="mb-8">
         <h1 className="text-2xl font-bold tracking-tight text-zinc-100 mb-3">
           Technical Skills
         </h1>

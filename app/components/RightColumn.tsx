@@ -1,0 +1,102 @@
+"use client";
+import { useRef, useState, useEffect } from "react";
+import Title from "./Title";
+import TechMarqueen from "./TechMarqueen";
+import ExperienceTimeline from "./ExperienceTimeline";
+import ProjectShowcase from "./ProjectShowcase";
+
+type SectionKey = "skills" | "experience" | "projects";
+
+const sections: { key: SectionKey; label: string }[] = [
+  { key: "skills", label: "Skills" },
+  { key: "experience", label: "Experience" },
+  { key: "projects", label: "Projects" },
+];
+
+export default function RightColumn() {
+  const scrollRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState<SectionKey>("skills");
+
+  const skillsRef = useRef<HTMLDivElement>(null);
+  const experienceRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+
+  const sectionRefs: Record<SectionKey, React.RefObject<HTMLDivElement | null>> = {
+    skills: skillsRef,
+    experience: experienceRef,
+    projects: projectsRef,
+  };
+
+  useEffect(() => {
+    const container = scrollRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const containerTop = container.getBoundingClientRect().top;
+      const offset = (headerRef.current?.offsetHeight ?? 0) + 60;
+
+      const found = [...sections].reverse().find(({ key }) => {
+        const el = sectionRefs[key].current;
+        if (!el) return false;
+        return el.getBoundingClientRect().top - containerTop <= offset;
+      });
+
+      if (found) setActive(found.key);
+    };
+
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (key: SectionKey) => {
+    const container = scrollRef.current;
+    const el = sectionRefs[key].current;
+    if (!container || !el) return;
+    const containerTop = container.getBoundingClientRect().top;
+    const elTop = el.getBoundingClientRect().top - containerTop + container.scrollTop;
+    const offset = headerRef.current?.offsetHeight ?? 0;
+    container.scrollTo({ top: elTop - offset, behavior: "smooth" });
+  };
+
+  return (
+    <section
+      ref={scrollRef}
+      className="w-full lg:w-1/2 overflow-y-scroll mr-[20vw]"
+      style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+    >
+      {/* Sticky title + nav */}
+      <div ref={headerRef} className="sticky top-0 z-10 bg-[#151312] px-12 pt-24 pb-0">
+        <Title />
+        <nav className="flex gap-8 border-b border-zinc-800">
+          {sections.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => scrollToSection(key)}
+              className={`pb-3 text-sm font-medium tracking-wide transition-colors border-b-2 -mb-px ${
+                active === key
+                  ? "text-zinc-100 border-zinc-100"
+                  : "text-zinc-500 border-transparent hover:text-zinc-300"
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </nav>
+      </div>
+
+      {/* Content */}
+      <div className="px-12 pb-24">
+        <div ref={skillsRef} className="pt-16">
+          <TechMarqueen />
+        </div>
+        <div ref={experienceRef} className="pt-24">
+          <ExperienceTimeline />
+        </div>
+        <div ref={projectsRef} className="pt-24">
+          <ProjectShowcase />
+        </div>
+      </div>
+    </section>
+  );
+}
