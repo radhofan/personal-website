@@ -59,7 +59,7 @@ const projects = [
     id: "bookcabin-flight",
     title: "BookCabin Flight Aggregator",
     description: "Flight search and aggregation backend normalizing multi-airline API responses (Garuda, Lion Air, Batik Air, AirAsia) with parallel queries, retry/backoff, caching, best-value ranking, and timezone-aware filtering.",
-    badge: "Backend / Node.js",
+    badge: "Golang",
   },
 ];
 
