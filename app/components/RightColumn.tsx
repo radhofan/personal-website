@@ -17,6 +17,7 @@ export default function RightColumn() {
   const scrollRef = useRef<HTMLElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<SectionKey>("skills");
+  const [exactHeight, setExactHeight] = useState<number | null>(null);
 
   const skillsRef = useRef<HTMLDivElement>(null);
   const experienceRef = useRef<HTMLDivElement>(null);
@@ -25,6 +26,33 @@ export default function RightColumn() {
     skills: skillsRef,
     experience: experienceRef,
   };
+
+  // Precisely observe the LeftColumn inner container and lock RightColumn height to it
+  useEffect(() => {
+    const leftSection = document.querySelector<HTMLElement>("section");
+    if (!leftSection) return;
+
+    const leftInnerDiv = leftSection.firstElementChild as HTMLElement | null;
+    if (!leftInnerDiv) return;
+
+    const updateHeight = () => {
+      const h = leftInnerDiv.offsetHeight;
+      if (h > 0) {
+        setExactHeight(h);
+      }
+    };
+
+    updateHeight();
+
+    const observer = new ResizeObserver(updateHeight);
+    observer.observe(leftInnerDiv);
+    window.addEventListener("resize", updateHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, []);
 
   // Active detection for internal sections (right column scroll)
   useEffect(() => {
@@ -61,7 +89,6 @@ export default function RightColumn() {
       if (el.getBoundingClientRect().top < window.innerHeight * 0.6) {
         setActive("projects");
       } else {
-        // revert to internal active when scrolled back up
         setActive((prev) => (prev === "projects" ? "skills" : prev));
       }
     };
@@ -87,8 +114,13 @@ export default function RightColumn() {
   return (
     <section
       ref={scrollRef}
-      className="w-full lg:w-1/2 overflow-y-scroll"
-      style={{ scrollbarWidth: "none", msOverflowStyle: "none" } as React.CSSProperties}
+      className="w-full lg:w-1/2 overflow-y-auto shrink-0 border-b border-transparent"
+      style={{
+        height: exactHeight ? `${exactHeight}px` : "840px",
+        maxHeight: exactHeight ? `${exactHeight}px` : "840px",
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      } as React.CSSProperties}
     >
       {/* Sticky title + nav */}
       <div ref={headerRef} className="sticky top-0 z-10 bg-[#151312] px-12 pt-24 pb-0">
@@ -111,7 +143,7 @@ export default function RightColumn() {
       </div>
 
       {/* Skills + Experience only */}
-      <div className="px-12 pb-24">
+      <div className="px-12 pb-16">
         <div ref={skillsRef} className="pt-16">
           <TechMarqueen />
         </div>

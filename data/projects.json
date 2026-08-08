@@ -1,0 +1,111 @@
+{
+  "featured": [
+    {
+      "id": "timbanganten-frontend",
+      "title": "Timbanganten",
+      "description": "Modern web frontend digitizing cemetery records for the Timbanganten Historical Foundation with sub-second search and interactive filters.",
+      "badge": "Fullstack Javascript",
+      "githubUrl": "https://github.com/radhofan/timbanganten-frontend"
+    },
+    {
+      "id": "kakeibo",
+      "title": "Kakeibo - AniList Finder",
+      "description": "Full-stack anime tracking and community platform where users log watch history, write reviews, and query AniList GraphQL API with read-through caching and admin panel.",
+      "badge": "PHP",
+      "githubUrl": "https://github.com/radhofan/kakeibo"
+    },
+    {
+      "id": "kasane",
+      "title": "Kasane",
+      "description": "Multi-layered web platform designed for scalable component composition, user workflow management, and modular state.",
+      "badge": "Fullstack Javascript",
+      "githubUrl": "https://github.com/radhofan/kasane"
+    },
+    {
+      "id": "hibana",
+      "title": "CariCuaca",
+      "description": "Interactive weather app with a 3D globe (CesiumJS) for live 7-day forecasts powered by Open-Meteo. Features a stateless ASP.NET Core backend with rate limiting and in-memory caching.",
+      "badge": ".NET",
+      "githubUrl": "https://github.com/radhofan/hibana"
+    },
+    {
+      "id": "bookcabin",
+      "title": "Flight Aggregate",
+      "description": "Flight search and aggregation backend normalizing multi-airline API responses with parallel queries, retry/backoff, caching, best-value ranking, and timezone filtering.",
+      "badge": "Golang",
+      "githubUrl": "https://github.com/radhofan/BookCabin---Home-Coding-Test"
+    },
+    {
+      "id": "mekiki",
+      "title": "HRFast",
+      "description": "Smart Applicant Tracking System (ATS) with Next.js, FastAPI, PostgreSQL, and Ollama local LLM integration. Features automated resume parsing and a LangChain ReAct chatbot assistant.",
+      "badge": "AI Engineering",
+      "githubUrl": "https://github.com/radhofan/mekiki"
+    },
+    {
+      "id": "daichou",
+      "title": "Explorato",
+      "description": "A single-player guild management game with a JavaFX desktop client backed by a Spring Boot REST and SSE API, PostgreSQL, Redis expedition caching, and RabbitMQ job processing.",
+      "badge": "Java",
+      "githubUrl": "https://github.com/radhofan/daichou"
+    },
+    {
+      "id": "kuasar-rag",
+      "title": "Kuasar RAG",
+      "description": "RAG pipeline boosting LLM accuracy with ChromaDB vector storage and 30% retrieval efficiency gain via custom ranking.",
+      "badge": "AI Engineering",
+      "githubUrl": "https://github.com/radhofan/kuasar-rag-system"
+    }
+  ],
+  "other": [
+    {
+      "id": "monitoring-khs",
+      "title": "KHS Monitor",
+      "description": "Academic performance monitoring platform offering real-time GPA calculation, grade trend analytics, and student record management.",
+      "badge": "Web / Academic",
+      "githubUrl": "https://github.com/radhofan/monitoring-khs"
+    },
+    {
+      "id": "tasuku",
+      "title": "Tasuku",
+      "description": "Streamlined task management application featuring visual kanban boards, priority tagging, and productivity metrics.",
+      "badge": "Productivity",
+      "githubUrl": "https://github.com/radhofan/tasuku"
+    },
+    {
+      "id": "dagangi",
+      "title": "Dagangi",
+      "description": "Comprehensive e-commerce and point-of-sale inventory system with real-time stock updates and transaction reports.",
+      "badge": "E-Commerce",
+      "githubUrl": "https://github.com/radhofan/dagangi"
+    },
+    {
+      "id": "habbitracker",
+      "title": "HabbiTracker",
+      "description": "Daily habit tracker application with streak visualizations, progress heatmaps, and customizable daily reminders.",
+      "badge": "Mobile / Web",
+      "githubUrl": "https://github.com/radhofan/HabbiTracker"
+    },
+    {
+      "id": "gapred",
+      "title": "GapRed",
+      "description": "Published PyPI ML library streamlining data preprocessing and feature engineering for rapid machine learning prototyping.",
+      "badge": "ML / Python",
+      "githubUrl": "https://github.com/radhofan/Gapred"
+    },
+    {
+      "id": "softtest",
+      "title": "SoftTest",
+      "description": "Automated black-box REST API security scanner detecting injection vulnerabilities and broken access control.",
+      "badge": "Security / Python",
+      "githubUrl": "https://github.com/radhofan/SoftTest"
+    },
+    {
+      "id": "museumtix",
+      "title": "MuseumTIX",
+      "description": "End-to-end museum ticketing system with JWT authentication, seat allocation, and automated e-ticket generation.",
+      "badge": "Fullstack",
+      "githubUrl": "https://github.com/radhofan/MuseumTIX"
+    }
+  ]
+}

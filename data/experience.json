@@ -1,0 +1,80 @@
+[
+  {
+    "id": "zeta-solutions",
+    "title": "Software Engineer",
+    "company": "Zeta Solutions",
+    "location": "Bandung, ID",
+    "type": "Part-Time",
+    "duration": "Jun 2025 – Aug 2026",
+    "icon": "code",
+    "responsibilities": [
+      "Built order management, warehouse management, and internal chat features for 30+ internal users using Next.js and PostgreSQL.",
+      "Migrated 10,000+ legacy records from Excel and paper-based workflows into a centralized database-backed application.",
+      "Developed 15+ reusable React components, including Kanban boards, file uploaders, and real-time chat modules.",
+      "Implemented a Qiankun-based microfrontend setup to separate internal modules and simplify deployment to AWS S3.",
+      "Designed responsive wedding invitation websites for client campaigns supporting 1,000+ visitors across mobile and desktop browsers."
+    ],
+    "skills": ["Next.js", "PostgreSQL", "React", "Microfrontend", "AWS S3"]
+  },
+  {
+    "id": "pln",
+    "title": "Software Engineer",
+    "company": "Indonesian State Electricity Company PLN",
+    "location": "Jakarta, ID",
+    "type": "Intern",
+    "duration": "Jun 2025 – Aug 2025",
+    "icon": "briefcase",
+    "responsibilities": [
+      "Built an internal Unit Price Contract management system to digitize procurement workflows and reduce manual document tracking.",
+      "Developed full-stack features using Next.js and PostgreSQL, including JWT authentication, custom middleware, and role-based access control.",
+      "Designed protected routes and permission-based UI flows for different internal user roles."
+    ],
+    "skills": ["Next.js", "PostgreSQL", "JWT", "RBAC", "Full-stack"]
+  },
+  {
+    "id": "lg-cns",
+    "title": "Software Developer Trainee",
+    "company": "LG CNS Enterprise Software Residency",
+    "location": "Bandung, ID",
+    "type": "Residency",
+    "duration": "Jun 2024 – Aug 2024",
+    "icon": "code",
+    "responsibilities": [
+      "Selected as one of 30 students for a 12-week enterprise software engineering residency conducted with Telkom University.",
+      "Completed 30+ full-stack training modules across Java, .NET, SQL, and enterprise application development workflows.",
+      "Built applications using Java, .NET, OracleDB, and MS SQL, covering backend logic, database operations, and frontend integration.",
+      "Worked with a 10,000+ line training codebase while practicing modular design, code organization, and software development standards."
+    ],
+    "skills": [".NET", "Java", "OracleDB", "MS SQL", "Enterprise Software"]
+  },
+  {
+    "id": "uchicago",
+    "title": "AI/ML Research Trainee",
+    "company": "University of Chicago",
+    "location": "Remote, USA",
+    "type": "Research",
+    "duration": "Jan 2025 – Jul 2025",
+    "icon": "code",
+    "responsibilities": [
+      "Selected as one of 50 computer science students in Indonesia for a research training program focused on AI software engineering and reproducibility.",
+      "Reproduced machine learning research papers by implementing training pipelines, running experiments, and comparing model behavior with reported results.",
+      "Fixed dependency issues, improved preprocessing pipelines, and reduced sources of non-deterministic training behavior in ML codebases."
+    ],
+    "skills": ["AI/ML", "Python", "Cloud Systems", "Research"]
+  },
+  {
+    "id": "telkom-lab",
+    "title": "Head Assistant Coordinator of Computing Laboratory",
+    "company": "Telkom University",
+    "location": "Bandung, ID",
+    "type": "Leadership",
+    "duration": "Feb 2025 – Feb 2026",
+    "icon": "users",
+    "responsibilities": [
+      "Led 50+ student assistants across Computing Laboratory, coordinating internal roles, recruitment, study groups, and daily laboratory activities.",
+      "Organized technical workshops with industry alumni and mentored students in competitive programming and foundational software engineering.",
+      "Supervised study group projects by helping teams define scope, divide tasks, use version control, and complete deliverables."
+    ],
+    "skills": ["Leadership", "Management", "Software Engineering", "Mentoring"]
+  }
+]

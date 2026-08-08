@@ -5,7 +5,7 @@ import ProjectsGrid from "./components/ProjectsGrid";
 
 export default function Home() {
   return (
-    <div className="bg-[#151312]">
+    <div className="bg-[#151312] min-h-screen text-zinc-100">
       {/* Particles — fixed so they cover the full viewport at all scroll positions */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <Particles
@@ -21,9 +21,9 @@ export default function Home() {
         />
       </div>
 
-      {/* Split layout — viewport height, same max-width container as projects grid */}
-      <div className="flex h-screen w-screen relative z-10">
-        <div className="flex w-full max-w-7xl mx-auto h-full">
+      {/* Split layout — top fold, aligned at top */}
+      <div className="flex w-full relative z-10">
+        <div className="flex w-full max-w-7xl mx-auto items-start">
           <LeftColumn />
           <RightColumn />
         </div>

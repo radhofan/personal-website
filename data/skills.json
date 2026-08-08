@@ -1,0 +1,14 @@
+[
+  { "id": "react", "name": "React" },
+  { "id": "nextjs", "name": "Next.js" },
+  { "id": "tailwind", "name": "Tailwind" },
+  { "id": "typescript", "name": "TypeScript" },
+  { "id": "javascript", "name": "JavaScript" },
+  { "id": "python", "name": "Python" },
+  { "id": "java", "name": "Java" },
+  { "id": "dotnet", "name": ".NET" },
+  { "id": "docker", "name": "Docker" },
+  { "id": "postgresql", "name": "PostgreSQL" },
+  { "id": "vue", "name": "Vue" },
+  { "id": "springboot", "name": "Spring Boot" }
+]

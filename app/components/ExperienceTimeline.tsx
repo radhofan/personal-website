@@ -1,6 +1,7 @@
 "use client";
 
 import React, { memo, useCallback, useState } from "react";
+import rawExperienceData from "@/data/experience.json";
 
 // Helper components with refined icons
 const ChevronDown = (props: React.SVGProps<SVGSVGElement>) => (
@@ -94,6 +95,13 @@ const GraduationCap = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const iconMap: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
+  code: Code,
+  briefcase: Briefcase,
+  users: Users,
+  graduation: GraduationCap,
+};
+
 // Shadcn-style Badge component
 const Badge = ({
   children,
@@ -145,87 +153,10 @@ interface ProfessionalTimelineProps {
   expandMode?: ExpandMode;
 }
 
-// --- MOCK DATA ---
-const timelineData: TimelineItemData[] = [
-  {
-    id: "zeta-solutions",
-    title: "Software Engineer Intern",
-    company: "Zeta Solutions",
-    location: "Bandung, Indonesia",
-    type: "Internship",
-    duration: "Aug 2025 — Feb 2026",
-    icon: Code,
-    responsibilities: [
-      "Architected a real-time order management and high-concurrency chat system for 30+ internal users; migrated 10,000+ legacy records from fragmented Excel and paper systems into a unified PostgreSQL database.",
-      "Refactored a production POS system by optimizing SQL transaction logic and database indexing; eliminated race conditions during concurrent checkout sessions to ensure 100% data consistency.",
-      "Architected the end-to-end development of the company’s flagship platform and official website using Next.js and Supabase; prioritized performance-first engineering for high Lighthouse scores."
-    ],
-    skills: ["Next.js", "Supabase", "PostgreSQL", "SQL", "Lighthouse"]
-  },
-  {
-    id: "pln",
-    title: "Software Engineer Intern",
-    company: "Indonesian State Electricity Company (PLN)",
-    location: "Jakarta, Indonesia",
-    type: "Internship",
-    duration: "June 2025 — Aug 2025",
-    icon: Briefcase,
-    responsibilities: [
-      "Architected an internal Unit Price Contract (UPC) management system to digitize and streamline procurement workflows for large-scale departmental operations.",
-      "Engineered a secure full-stack architecture using Next.js; implemented a robust security layer featuring JWT-based authentication and custom middleware for RBAC.",
-      "Demonstrated high technical autonomy by owning the end-to-end development lifecycle, from database schema design to frontend implementation."
-    ],
-    skills: ["Next.js", "JWT", "RBAC", "PostgreSQL", "Full-stack"]
-  },
-  {
-    id: "uchicago",
-    title: "Research Trainee (UChicago–Indonesia Program)",
-    company: "University of Chicago",
-    location: "Remote, USA",
-    type: "Research",
-    duration: "Jan 2025 — July 2025",
-    icon: Code,
-    responsibilities: [
-      "Selected as one of the top 50 computer science students in Indonesia for an intensive research training program focusing on cloud systems and experimental reproducibility.",
-      "Accelerated the validation of computer science papers by reproducing complex experiments on the Chameleon Trovi cloud platform, achieving high-fidelity results.",
-      "Modernized and debugged legacy research codebases by resolving non-deterministic artifacts and optimizing scripts for cloud-native environments.",
-      "Developed a deep technical understanding of distributed systems and cloud infrastructure through rigorous auditing of experimental artifacts."
-    ],
-    skills: ["Cloud Systems", "Distributed Systems", "Cloud-native", "Research"]
-  },
-  {
-    id: "lg-cns",
-    title: "Software Developer Trainee",
-    company: "LG CNS Enterprise Software Residency",
-    location: "Bandung, Indonesia",
-    type: "Residency",
-    duration: "June 2024 — Aug 2024",
-    icon: Code,
-    responsibilities: [
-      "Selected as one of 30 top-tier students for a high-intensity software engineering residency focusing on enterprise-grade development lifecycles.",
-      "Delivered 30+ full-stack modules within 12 weeks, simulating rapid-deployment scenarios and managing high context-switching between technical requirements.",
-      "Engineered robust applications across ecosystems including .NET and Java, implementing complex database logic with OracleDB and MS SQL.",
-      "Refined professional coding standards by managing 10,000+ lines of code, focusing on modular architecture and scalability."
-    ],
-    skills: [".NET", "Java", "OracleDB", "MS SQL", "Enterprise Software"]
-  },
-  {
-    id: "telkom-lab",
-    title: "Head Assistant Coordinator of Computing Laboratory",
-    company: "Telkom University",
-    location: "Bandung, Indonesia",
-    type: "Leadership",
-    duration: "Feb 2025 — Feb 2026",
-    icon: Users,
-    responsibilities: [
-      "Spearheaded the organizational restructuring of the laboratory, managing over 50 student assistants and streamlining recruitment processes.",
-      "Elevated educational standards by coordinating advanced workshops with industry alumni and mentoring students in competitive programming.",
-      "Supervised the delivery of collaborative software projects, guiding student teams through scoping, modular design, and version control practices.",
-      "Cultivated a culture of accountability and professional growth by implementing a solutions-oriented feedback loop."
-    ],
-    skills: ["Leadership", "Management", "Software Design", "Mentoring"]
-  }
-];
+const timelineData: TimelineItemData[] = rawExperienceData.map((item) => ({
+  ...item,
+  icon: iconMap[item.icon] ?? Code,
+}));
 
 // --- COMPONENTS ---
 interface TimelineItemContentProps {
@@ -369,7 +300,6 @@ const TimelineItem = memo(function TimelineItem({
   );
 });
 TimelineItem.displayName = "TimelineItem";
-
 
 // --- MAIN TIMELINE ---
 export function ProfessionalTimeline({
