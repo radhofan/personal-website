@@ -36,6 +36,13 @@
       "githubUrl": "https://github.com/radhofan/BookCabin---Home-Coding-Test"
     },
     {
+      "id": "splsh",
+      "title": "Splsh",
+      "description": "Lightweight, containerless development environment manager in Go that provisions project-local toolchains natively and prevents global PATH pollution via declarative YAML manifests.",
+      "badge": "Golang",
+      "githubUrl": "https://github.com/radhofan/splsh"
+    },
+    {
       "id": "mekiki",
       "title": "HRFast",
       "description": "Smart Applicant Tracking System (ATS) with Next.js, FastAPI, PostgreSQL, and Ollama local LLM integration. Features automated resume parsing and a LangChain ReAct chatbot assistant.",
